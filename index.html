@@ -4,12 +4,6 @@
 	<title>Pagina Web Series</title>
 </head>
 <body bgcolor="blue">
-	<audio autoplay loop>
-		<source src="Familia.mp3" type="audio/mpeg">
-		<!-- Agrega el tipo de archivo de audio (MP3) -->
-		<!-- Agrega una etiqueta de respaldo en caso de que el navegador no pueda reproducir audio -->
-		Tu navegador no soporta la reproducción de audio.
-	</audio>
 	<div id="Header" style="background-color:black;color:red;border:1px black solid">
 		<h1 style="text-align: center; font-size: 50px">
 			JaviBot00
@@ -39,5 +33,30 @@
 			</td>
 		</tr>
 	</table>
+
+	<!-- Agrega un botón para reproducir el audio -->
+	<button id="playAudio">Reproducir Audio</button>
+
+	<audio id="audioPlayer" loop>
+		<source src="Familia.mp3" type="audio/mpeg">
+		<!-- Agrega el tipo de archivo de audio (MP3) -->
+		<!-- Agrega una etiqueta de respaldo en caso de que el navegador no pueda reproducir audio -->
+		Tu navegador no soporta la reproducción de audio.
+	</audio>
+
+	<script>
+		// Obtén el botón y el reproductor de audio
+		const playButton = document.getElementById('playAudio');
+		const audioPlayer = document.getElementById('audioPlayer');
+
+		// Agrega un evento de clic al botón para reproducir el audio
+		playButton.addEventListener('click', () => {
+			// Intenta reproducir el audio
+			audioPlayer.play().catch(error => {
+				// Si la reproducción es bloqueada, muestra un mensaje
+				console.error('La reproducción automática está bloqueada: ', error);
+			});
+		});
+	</script>
 </body>
 </html>
